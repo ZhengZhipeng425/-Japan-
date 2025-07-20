@@ -13,22 +13,25 @@ jobs:
     steps:
       - name: 📥 Checkout repository
         uses: actions/checkout@v3
+        with:
+          persist-credentials: true   # 这里确保保留 token，默认是 true，可以省略
 
       - name: 🐍 Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.10" # 可根据你电脑的 Python 版本调整
+          python-version: "3.10"
 
       - name: 📦 Install dependencies (if needed)
         run: |
           python -m pip install --upgrade pip
-          # 如果你后续用到 pillow 或其他包可放 requirements.txt
           # pip install -r requirements.txt
 
       - name: ⚙️ Run Python script to generate JSON
         run: python create_json.py
 
-      - name: Push changes
-        uses: ad-m/github-push-action@v0.8.0
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: 📝 Commit and push changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data.json
+          git diff --cached --quiet || (git commit -m "🔄 Auto update data.json" && git push)
