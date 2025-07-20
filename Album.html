@@ -46,35 +46,40 @@
     <h1>相册</h1>
     <hr />
 
-    <!-- 第一张照片 -->
-    <div class="photo-row">
-      <div class="photo">
-        <img src="album/DSC_2575.jpg" alt="照片1" />
-      </div>
-      <div class="description">朴姐、樊姐、老板在大阪Donki.</div>
-    </div>
+    <div id="album-container"></div>
 
-    <!-- 第二张照片 -->
-    <!--
-    <div class="photo-row">
-      <div class="photo">
-        <img src="photo2.jpg" alt="照片2" />
-      </div>
-      <div class="description">
-        傍晚时分的海边，美丽的夕阳和远处的帆船形成了绝美的画面。
-      </div>
-    </div>
-    -->
+    <script>
+      const jsonUrl =
+        "https://raw.githubusercontent.com/ZhengZhipeng425/-Japan-/main/data.json"; // ✅ 替换为你自己的 JSON 地址
 
-    <!-- 添加更多照片 -->
-    <!--
-  <div class="photo-row">
-    <div class="photo">
-      <img src="photoX.jpg" alt="照片X">
-    </div>
-    <div class="description">
-      描述内容。
-    </div>
-  </div>
-  --></body>
+      fetch(jsonUrl)
+        .then((res) => res.json())
+        .then((data) => {
+          const container = document.getElementById("album-container");
+
+          data.forEach((item) => {
+            const row = document.createElement("div");
+            row.className = "photo-row";
+
+            const photoDiv = document.createElement("div");
+            photoDiv.className = "photo";
+            const img = document.createElement("img");
+            img.src = item.image_path;
+            img.alt = item.title;
+            photoDiv.appendChild(img);
+
+            const descDiv = document.createElement("div");
+            descDiv.className = "description";
+            descDiv.textContent = item.description;
+
+            row.appendChild(photoDiv);
+            row.appendChild(descDiv);
+            container.appendChild(row);
+          });
+        })
+        .catch((error) => {
+          console.error("❌ 加载 JSON 数据失败：", error);
+        });
+    </script>
+  </body>
 </html>
