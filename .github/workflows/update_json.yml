@@ -6,6 +6,9 @@ on:
       - "images/**" # 图片有变动就触发
       - "create_json.py" # 脚本变动也触发
 
+permissions:
+  contents: write
+
 jobs:
   generate-json:
     runs-on: ubuntu-latest
