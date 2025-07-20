@@ -66,6 +66,7 @@
             const img = document.createElement("img");
             img.src = item.image_path;
             img.alt = item.title;
+            img.loading = "lazy"; // 延迟加载图片
             photoDiv.appendChild(img);
 
             const descDiv = document.createElement("div");
