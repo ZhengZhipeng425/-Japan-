@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <title>相册</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+      }
+
+      h1 {
+        text-align: left;
+      }
+
+      hr {
+        margin-bottom: 30px;
+      }
+
+      .photo-row {
+        display: flex;
+        align-items: center;
+        margin-bottom: 40px;
+      }
+
+      .photo {
+        flex: 1;
+        padding-right: 20px;
+      }
+
+      .photo img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      .description {
+        flex: 1;
+        font-size: 16px;
+        line-height: 1.6;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>相册</h1>
+    <hr />
+
+    <!-- 第一张照片 -->
+    <div class="photo-row">
+      <div class="photo">
+        <img
+          src="/Users/zhengzhipeng/Documents/摄影相关/Japan Journey/album/DSC_2575.jpg"
+          alt="照片1"
+        />
+      </div>
+      <div class="description">朴姐、樊姐、老板在大阪Donki.</div>
+    </div>
+
+    <!-- 第二张照片 -->
+    <!--
+    <div class="photo-row">
+      <div class="photo">
+        <img src="photo2.jpg" alt="照片2" />
+      </div>
+      <div class="description">
+        傍晚时分的海边，美丽的夕阳和远处的帆船形成了绝美的画面。
+      </div>
+    </div>
+    -->
+
+    <!-- 添加更多照片 -->
+    <!--
+  <div class="photo-row">
+    <div class="photo">
+      <img src="photoX.jpg" alt="照片X">
+    </div>
+    <div class="description">
+      描述内容。
+    </div>
+  </div>
+  --></body>
+</html>
